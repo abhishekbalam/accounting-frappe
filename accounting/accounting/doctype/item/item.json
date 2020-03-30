@@ -1,0 +1,124 @@
+{
+ "actions": [],
+ "creation": "2020-02-18 16:22:11.325372",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_name",
+  "column_break_3",
+  "item_supplier",
+  "section_break_4",
+  "cost_price",
+  "column_break_6",
+  "selling_price",
+  "data_9",
+  "item_quantity"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Item Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Item Supplier",
+   "options": "Party",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "item_quantity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Item Quantity"
+  },
+  {
+   "fieldname": "cost_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Cost Price",
+   "reqd": 1
+  },
+  {
+   "fieldname": "selling_price",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Selling Price",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_9",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "links": [],
+ "modified": "2020-03-16 12:23:14.828850",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "Item",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accountant",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Owner",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "item_name,item_supplier,cost_price,selling_price",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "item_name",
+ "track_changes": 1
+}

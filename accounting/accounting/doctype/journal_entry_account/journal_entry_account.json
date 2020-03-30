@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "creation": "2020-03-12 17:28:02.810814",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "account",
+  "debit",
+  "credit",
+  "party_name",
+  "party_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Party Type"
+  },
+  {
+   "default": "0",
+   "fieldname": "debit",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Debit"
+  },
+  {
+   "default": "0",
+   "fieldname": "credit",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Credit"
+  },
+  {
+   "fieldname": "party_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Party",
+   "options": "Party"
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Account",
+   "options": "Account",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2020-03-14 18:32:31.979061",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "Journal Entry Account",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

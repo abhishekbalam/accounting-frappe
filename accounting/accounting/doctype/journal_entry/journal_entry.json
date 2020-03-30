@@ -1,0 +1,119 @@
+{
+ "actions": [],
+ "creation": "2020-03-12 17:25:15.478458",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1",
+  "posting_date",
+  "column_break_3",
+  "is_opening",
+  "section_break_3",
+  "accounting_entries",
+  "data_9",
+  "total_debit",
+  "column_break_9",
+  "total_credit",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_debit",
+   "fieldtype": "Read Only",
+   "label": "Total Debit"
+  },
+  {
+   "fieldname": "total_credit",
+   "fieldtype": "Read Only",
+   "label": "Total Credit"
+  },
+  {
+   "fieldname": "accounting_entries",
+   "fieldtype": "Table",
+   "label": "Accounting Entries",
+   "options": "Journal Entry Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "data_9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_opening",
+   "fieldtype": "Check",
+   "label": "Is Opening"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Journal Entry",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2020-03-14 19:03:26.460957",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "Journal Entry",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accountant",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

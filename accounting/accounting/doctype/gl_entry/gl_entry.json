@@ -1,0 +1,135 @@
+{
+ "actions": [],
+ "creation": "2020-03-12 17:00:29.924971",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "posting_date",
+  "account",
+  "debit_amount",
+  "credit_amount",
+  "balance",
+  "voucher_type",
+  "voucher_number",
+  "party_type",
+  "party",
+  "against_voucher_type",
+  "against_voucher_number",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "debit_amount",
+   "fieldtype": "Currency",
+   "label": "Debit Amount"
+  },
+  {
+   "fieldname": "credit_amount",
+   "fieldtype": "Currency",
+   "label": "Credit Amount"
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Data",
+   "label": "Party Type"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Link",
+   "label": "Party",
+   "options": "Party"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "GL Entry",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "voucher_type",
+   "fieldtype": "Data",
+   "label": "Voucher Type"
+  },
+  {
+   "fieldname": "against_voucher_type",
+   "fieldtype": "Data",
+   "label": "Against Voucher Type"
+  },
+  {
+   "fieldname": "against_voucher_number",
+   "fieldtype": "Data",
+   "label": "Against Voucher Number"
+  },
+  {
+   "fieldname": "voucher_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Voucher Number"
+  },
+  {
+   "fieldname": "balance",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Balance"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  }
+ ],
+ "in_create": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2020-03-17 17:05:49.961292",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "GL Entry",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accountant",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "read_only": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
