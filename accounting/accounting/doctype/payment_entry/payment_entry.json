@@ -60,8 +60,9 @@
   {
    "fetch_from": "invoice.amount_due",
    "fieldname": "amount_due",
-   "fieldtype": "Read Only",
-   "label": "Amount Due"
+   "fieldtype": "Currency",
+   "label": "Amount Due",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_5",
@@ -127,7 +128,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-03-17 12:30:32.940164",
+ "modified": "2020-03-31 16:20:32.828301",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Payment Entry",

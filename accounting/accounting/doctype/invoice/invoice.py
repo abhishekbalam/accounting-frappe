@@ -6,8 +6,7 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 import time
-from accounting.accounting.report.general_ledger.general_ledger import get_balance
-from accounting.accounting.report.general_ledger.general_ledger import make_entry
+from accounting.accounting.report.general_ledger.general_ledger import get_balance, make_entry
 
 class Invoice(Document):
 	

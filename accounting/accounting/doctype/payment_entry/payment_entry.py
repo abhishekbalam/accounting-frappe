@@ -3,144 +3,69 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
-# import frappe
-from frappe.model.document import Document
 import frappe
+from frappe.model.document import Document
+from accounting.accounting.report.general_ledger.general_ledger import get_balance, make_entry
 
 class PaymentEntry(Document):
 
 	def autoname(self):
-		count = frappe.db.count('Payment Entry')
-		count += 1
+		count = frappe.db.count('Payment Entry') + 1
 		self.name = 'PE-' + str(count).zfill(4)
-
-	def on_submit(self):
-		docs = {}
-		common_doc = {
-			'doctype': 'GL Entry',
-			'posting_date': self.payment_date,
-			'voucher_type': 'Payment Entry',
-			'voucher_number': self.name,
-			'party': self.party_name,
-			'against_voucher_number': self.invoice,
-		}
-		if self.entry_type == 'Pay':
-			docs = [
-				{
-					'account': 'Cash In Hand',
-					'debit_amount': self.payment_amount,
-					'credit_amount': 0,
-				},
-				{
-					'account': 'Creditors',
-					'debit_amount': 0,
-					'credit_amount': self.payment_amount,
-				}
-			]
-			for x in docs:
-				x.update({
-					'party_type': 'Supplier',
-					'against_voucher_type': 'Purchase Invoice',
-				})
-				x.update(common_doc)
-		else:
-			docs = [
-				{
-					'account': 'Debtors',
-					'debit_amount': self.payment_amount,
-					'credit_amount': 0,
-				},
-				{
-					'account': 'Cash In Hand',
-					'debit_amount': 0,
-					'credit_amount': self.payment_amount,
-				}
-			]
-			for x in docs:
-				x.update({
-					'party_type': 'Customer',
-					'against_voucher_type': 'Sales Invoice',
-				})
-				x.update(common_doc)
-
-		for x in docs:
-			print(x['debit_amount'], x['credit_amount'], x['account'])
-			bal = self.get_balance(x['account'], x['debit_amount'], x['credit_amount'])
-			x['balance'] = bal
-			x = frappe.get_doc(x)
-			x.insert()
-			x.submit()
-		
-		invoice_doc = frappe.get_doc('Invoice', self.invoice)
-		invoice_doc.amount_due = str(int(invoice_doc.amount_due) - self.payment_amount)
-		if int(invoice_doc.amount_due) == 0:
-			invoice_doc.status = 'Paid'
-		invoice_doc.save()
 	
+	def on_submit(self):
+		self.make_gl_entry(to_submit=True)
+		self.update_amount_due(to_submit=True)
+		
 	def on_cancel(self):
-		# Bug hain, revisit.
-		docs = {}
+		self.make_gl_entry(to_submit=False)
+		self.update_amount_due(to_submit=False)
+		
+	def make_gl_entry(self, to_submit):
+		amounts = [self.amount_due, 0]
+		accounts = ['Cash In Hand', 'Creditors', 'Debtors', 'Cash In Hand']
+		to_pay = (self.entry_type == 'Pay')
+		remarks = ('Payment Entry for ' + self.invoice)
+		if not to_submit:
+			remarks = 'Reverse ' + remarks
+		
 		common_doc = {
 			'doctype': 'GL Entry',
 			'posting_date': self.payment_date,
 			'voucher_type': 'Payment Entry',
 			'voucher_number': self.name,
 			'party': self.party_name,
-			'against_voucher_number': self.invoice,
+			'remarks': remarks,
+			'party_type' : 'Supplier' if to_pay else 'Customer',
+			'against_voucher_type': ('Purchase' if to_pay else 'Sales') + ' Invoice',
+			'against_voucher_number': self.invoice
 		}
-		if self.entry_type == 'Pay':
-			docs = [
-				{
-					'account': 'Cash In Hand',
-					'debit_amount': 0,
-					'credit_amount': self.payment_amount,
-				},
-				{
-					'account': 'Creditors',
-					'debit_amount': self.payment_amount,
-					'credit_amount': 0,
-				}
-			]
-			for x in docs:
-				x.update({
-					'party_type': 'Supplier',
-					'against_voucher_type': 'Purchase Invoice',
-				})
-				x.update(common_doc)
+		docs = []
+		for i in [0, 1]:
+			entry = common_doc.copy()
+			entry.update({
+				'account': accounts[0:2][i] if to_pay else accounts[2:4][i],
+				'credit_amount': amounts[i] if to_submit else amounts[int(not bool(i))],
+				'debit_amount': amounts[int(not bool(i))] if to_submit else amounts[i],
+			})
+			print(i, entry['debit_amount'], entry['credit_amount'])
+			entry['balance'] = get_balance(entry['account'], entry['debit_amount'], entry['credit_amount'])
+			docs.append(entry)
+
+		make_entry(docs)
+	
+	def update_amount_due(self, to_submit):
+		invoice = frappe.get_doc('Invoice', self.invoice)
+		total_due = 0
+		for it in invoice.item_list:
+			total_due += it.amount
+		invoice.amount_due += self.payment_amount * (-1 if to_submit else 1)
+		
+		if invoice.amount_due == 0:
+			invoice.payment_status = 'Paid'
+		elif invoice.amount_due == total_due:
+			invoice.payment_status = 'Unpaid'
 		else:
-			docs = [
-				{
-					'account': 'Debtors',
-					'debit_amount': 0,
-					'credit_amount': self.payment_amount,
-				},
-				{
-					'account': 'Cash In Hand',
-					'debit_amount': self.payment_amount,
-					'credit_amount': 0,
-				}
-			]
-			for x in docs:
-				x.update({
-					'party_type': 'Customer',
-					'against_voucher_type': 'Sales Invoice',
-				})
-				x.update(common_doc)
-
-		for x in docs:
-			print(x['debit_amount'], x['credit_amount'], x['account'])
-			bal = self.get_balance(x['account'], x['debit_amount'], x['credit_amount'])
-			x['balance'] = bal
-			x = frappe.get_doc(x)
-			x.insert()
-			x.submit()
+			invoice.payment_status = 'Partial'
 		
-
-	def get_balance(self, account, debit, credit):
-		try:
-			total_debit = frappe.db.sql("Select SUM(debit_amount) FROM `tabGL Entry` GROUP BY account HAVING account='"+account+"'")[0][0]
-			total_credit = frappe.db.sql("Select SUM(credit_amount) FROM `tabGL Entry` GROUP BY account HAVING account='"+account+"'")[0][0]
-			return (total_debit+int(debit)) - (total_credit+int(credit))
-		except:
-			return int(debit) - int(credit)
-		
+		invoice.save()

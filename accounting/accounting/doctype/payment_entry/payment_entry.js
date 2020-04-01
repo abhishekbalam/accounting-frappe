@@ -39,7 +39,7 @@ frappe.ui.form.on('Payment Entry', {
 		    return {
 		        filters: [
 						['Invoice', 'invoice_type', '=', invoice_type],
-						['Invoice', 'status', '=', 'Unpaid'],
+						['Invoice', 'payment_status', '!=', 'Paid'],
 						['Invoice', 'docstatus', '!=', 2]
 		            ]
 		    }
@@ -62,5 +62,10 @@ frappe.ui.form.on('Payment Entry', {
 			frm.set_value('party_type', 'Customer');
 		}
 		frm.refresh_field('party_type');
+	},
+	validate: function(frm){
+		if (frm.doc.payment_amount > frm.doc.amount_due){
+			frappe.throw('Payment Amount cannot exceed Amount Due!')
+		}
 	}
 });

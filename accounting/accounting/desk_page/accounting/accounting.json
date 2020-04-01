@@ -1,0 +1,54 @@
+{
+ "cards": [
+  {
+   "links": "[\n    {\n        \"description\": \"Manage Items.\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Manage Items\",\n        \"name\": \"Item\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"description\": \"Manage Parties.\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Manage Parties\",\n        \"name\": \"Party\",\n        \"type\": \"doctype\"\n    }\n]",
+   "title": "To Get Started"
+  },
+  {
+   "links": "[\n    {\n        \"description\": \"Create Sales/Purchase Invoice.\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Invoice List\",\n        \"name\": \"Invoice\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"description\": \"Create Payment Entry.\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Payment Entry List\",\n        \"name\": \"Payment Entry\",\n        \"type\": \"doctype\"\n    },\n    {\n        \"description\": \"Create Journal Entry.\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Journal Entry List\",\n        \"name\": \"Journal Entry\",\n        \"type\": \"doctype\"\n    }\n]",
+   "title": "Transactions"
+  },
+  {
+   "links": "[\n    {\n        \"description\": \"Chart Of Accounts\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Chart Of Accounts\",\n        \"name\": \"Account\",\n        \"type\": \"doctype\",\n        \"route\": \"#Tree/Account\"\n    },\n    {\n        \"description\": \"General Ledger.\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"General Ledger\",\n        \"name\": \"General Ledger\",\n        \"type\": \"report\",\n        \"route\": \"#query-report/General Ledger\"\n    },\n    {\n        \"description\": \"Trial Balance.\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Trial Balance\",\n        \"name\": \"Trial Balance\",\n        \"type\": \"report\",\n        \"route\": \"#query-report/Trial Balance\"\n    }\n]",
+   "title": "Reports"
+  }
+ ],
+ "cards_label": "Accounting Overview",
+ "category": "Modules",
+ "charts": [],
+ "creation": "2020-03-30 23:29:04.454029",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
+ "doctype": "Desk Page",
+ "extends_another_page": 0,
+ "icon": "",
+ "idx": 0,
+ "is_standard": 1,
+ "label": "Accounting",
+ "modified": "2020-03-31 03:49:57.568961",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "Accounting",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 0,
+ "shortcuts": [
+  {
+   "is_query_report": 0,
+   "link_to": "Invoice",
+   "type": "DocType"
+  },
+  {
+   "is_query_report": 0,
+   "link_to": "Payment Entry",
+   "type": "DocType"
+  },
+  {
+   "is_query_report": 0,
+   "link_to": "Journal Entry",
+   "type": "DocType"
+  }
+ ],
+ "shortcuts_label": "Accounting Entries"
+}

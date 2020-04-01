@@ -5,6 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
+from accounting.accounting.report.general_ledger.general_ledger import get_balance, make_entry
 
 class JournalEntry(Document):
 	def autoname(self):
@@ -27,49 +28,31 @@ class JournalEntry(Document):
 			self.total_debit = total_debit
 
 	def on_submit(self):
-		for e in self.accounting_entries:
-			doc = frappe.get_doc({
-				'doctype': 'GL Entry',
-				'posting_date': self.posting_date,
-				'account': e.account,
-				'debit_amount': e.debit,
-				'credit_amount': e.credit,
-				'balance': self.get_balance(e.account, e.debit, e.credit),
-				'voucher_type': 'Journal Entry',
-				'voucher_number': self.name,
-				'party_type': '',
-				'party': e.party_name,
-				'against_voucher_type': '',
-				'against_voucher_number': '',
-			})
-			doc.insert()
-			doc.submit()
+		self.make_gl_entries(is_submit=True)
 	
 	def on_cancel(self):
+		self.make_gl_entries(is_submit=False)
+
+	def make_gl_entries(self, is_submit=True):
+		doc_list = []
+		remarks = 'Journal Entry for ' + self.name
+		if not is_submit:
+			remarks += 'Reverse ' + remarks
 		for e in self.accounting_entries:
-			doc = frappe.get_doc({
+			doc = {
 				'doctype': 'GL Entry',
-				'status': 'Cancelled',
 				'posting_date': self.posting_date,
 				'account': e.account,
-				'debit_amount': e.credit, # Reverse
-				'credit_amount': e.debit, # Reverse
-				'balance': self.get_balance(e.account, e.credit, e.debit),
+				'debit_amount': e.debit if is_submit else e.credit,
+				'credit_amount': e.credit if is_submit else e.debit,
+				'balance': get_balance(e.account, e.debit, e.credit),
 				'voucher_type': 'Journal Entry',
 				'voucher_number': self.name,
 				'party_type': '',
 				'party': e.party_name,
 				'against_voucher_type': '',
 				'against_voucher_number': '',
-			})
-			doc.insert()
-			doc.submit()
-
-	def get_balance(self, account, debit, credit):
-		try:
-			total_debit = frappe.db.sql("Select SUM(debit_amount) FROM `tabGL Entry` GROUP BY account HAVING account='"+account+"'")[0][0]
-			total_credit = frappe.db.sql("Select SUM(credit_amount) FROM `tabGL Entry` GROUP BY account HAVING account='"+account+"'")[0][0]
-			return (total_debit+int(debit)) - (total_credit+int(credit))
-		except:
-			return int(debit) - int(credit)
-		
+				'remarks': remarks
+			}
+			doc_list.append(doc)
+		make_entry(doc_list)

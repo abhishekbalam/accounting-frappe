@@ -6,10 +6,12 @@
  "engine": "InnoDB",
  "field_order": [
   "invoice_type",
-  "party_name",
   "column_break_2",
-  "status",
+  "party_name",
+  "section_break_5",
   "amount_due",
+  "column_break_6",
+  "payment_status",
   "section_break_4",
   "issue_date",
   "column_break_3",
@@ -32,16 +34,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "allow_on_submit": 1,
-   "default": "Unpaid",
-   "fieldname": "status",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "in_list_view": 1,
-   "label": "Status",
-   "reqd": 1
-  },
-  {
    "fieldname": "section_break_4",
    "fieldtype": "Section Break"
   },
@@ -59,7 +51,8 @@
   {
    "fieldname": "due_date",
    "fieldtype": "Date",
-   "label": "Due Date"
+   "label": "Due Date",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_7",
@@ -84,6 +77,7 @@
    "default": "0",
    "fieldname": "amount_due",
    "fieldtype": "Currency",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Amount Due"
   },
@@ -95,11 +89,29 @@
    "options": "Invoice",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Unpaid",
+   "fieldname": "payment_status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Payment Status",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-03-25 16:18:30.430129",
+ "modified": "2020-03-31 15:49:02.717137",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Invoice",
