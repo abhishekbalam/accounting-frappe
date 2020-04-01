@@ -41,6 +41,8 @@
    "default": "Today",
    "fieldname": "payment_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Payment Date",
    "reqd": 1
   },
@@ -77,16 +79,20 @@
    "fieldtype": "Section Break"
   },
   {
+   "bold": 1,
    "fieldname": "entry_type",
    "fieldtype": "Select",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Entry Type",
-   "options": "Pay\nReceive\nInternal Transfer",
+   "options": "Pay\nReceive",
    "reqd": 1
   },
   {
    "fieldname": "invoice",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Invoice",
    "options": "Invoice"
   },
@@ -128,7 +134,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-03-31 16:20:32.828301",
+ "modified": "2020-04-01 16:53:41.415452",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Payment Entry",

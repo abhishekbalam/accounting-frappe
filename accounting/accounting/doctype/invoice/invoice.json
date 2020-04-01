@@ -25,6 +25,7 @@
    "fieldname": "party_name",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Party Name",
    "options": "Party",
    "reqd": 1
@@ -41,6 +42,7 @@
    "default": "Today",
    "fieldname": "issue_date",
    "fieldtype": "Date",
+   "in_standard_filter": 1,
    "label": "Issue Date",
    "reqd": 1
   },
@@ -66,15 +68,18 @@
    "reqd": 1
   },
   {
+   "bold": 1,
    "fieldname": "invoice_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Invoice Type",
    "options": "Purchase\nSales",
    "reqd": 1
   },
   {
    "allow_on_submit": 1,
-   "default": "0",
+   "default": "0.0",
    "fieldname": "amount_due",
    "fieldtype": "Currency",
    "hidden": 1,
@@ -111,7 +116,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-03-31 15:49:02.717137",
+ "modified": "2020-04-01 16:52:07.492241",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Invoice",
