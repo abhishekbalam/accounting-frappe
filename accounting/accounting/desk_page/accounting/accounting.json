@@ -9,44 +9,48 @@
    "title": "Transactions"
   },
   {
-   "links": "[\n    {\n        \"description\": \"Chart Of Accounts\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Chart Of Accounts\",\n        \"name\": \"Account\",\n        \"type\": \"doctype\",\n        \"route\": \"#Tree/Account\"\n    },\n    {\n        \"description\": \"General Ledger.\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"General Ledger\",\n        \"name\": \"General Ledger\",\n        \"type\": \"report\",\n        \"route\": \"#query-report/General Ledger\"\n    },\n    {\n        \"description\": \"Trial Balance.\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Trial Balance\",\n        \"name\": \"Trial Balance\",\n        \"type\": \"report\",\n        \"route\": \"#query-report/Trial Balance\"\n    }\n]",
+   "links": "[\n    {\n        \"description\": \"Chart Of Accounts\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Chart Of Accounts\",\n        \"name\": \"Account\",\n        \"type\": \"doctype\",\n        \"route\": \"#Tree/Account\"\n    },\n    {\n        \"description\": \"General Ledger.\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"General Ledger\",\n        \"name\": \"General Ledger\",\n        \"type\": \"report\",\n        \"route\": \"#query-report/General Ledger\"\n    },\n    {\n        \"description\": \"Trial Balance.\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Trial Balance\",\n        \"name\": \"Trial Balance\",\n        \"type\": \"report\",\n        \"route\": \"#query-report/Trial Balance\"\n    },\n    {\n        \"description\": \"Profit And Loss\",\n        \"icon\": \"octicon octicon-cloud-upload\",\n        \"label\": \"Profit And Loss\",\n        \"name\": \"Profit And Loss\",\n        \"type\": \"report\",\n        \"route\": \"#query-report/Profit And Loss\"\n    }\n]",
    "title": "Reports"
   }
  ],
  "cards_label": "Accounting Overview",
  "category": "Modules",
  "charts": [],
+ "charts_label": "Profit And Loss",
  "creation": "2020-03-30 23:29:04.454029",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
  "docstatus": 0,
  "doctype": "Desk Page",
  "extends_another_page": 0,
- "icon": "",
+ "icon": "octicon octicon-book",
  "idx": 0,
  "is_standard": 1,
  "label": "Accounting",
- "modified": "2020-04-01 17:43:28.479802",
+ "modified": "2020-04-02 09:35:23.640044",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Accounting",
  "onboarding": "",
  "owner": "Administrator",
  "pin_to_bottom": 0,
- "pin_to_top": 0,
+ "pin_to_top": 1,
  "shortcuts": [
   {
-   "color": "#ff4d4d",
-   "format": "{} Subitted",
+   "color": "",
+   "format": "{} Unpaid",
    "icon": "fa fa-file-text",
    "is_query_report": 0,
    "link_to": "Invoice",
+   "stats_filter": "{\"payment_status\":\"Unpaid\"}",
    "type": "DocType"
   },
   {
+   "format": "",
    "icon": "fa fa-money",
    "is_query_report": 0,
    "link_to": "Payment Entry",
+   "stats_filter": "",
    "type": "DocType"
   },
   {

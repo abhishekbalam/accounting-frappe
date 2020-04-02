@@ -34,12 +34,12 @@
   {
    "fieldname": "debit_amount",
    "fieldtype": "Currency",
-   "label": "Debit Amount"
+   "label": "Debit Amount (INR)"
   },
   {
    "fieldname": "credit_amount",
    "fieldtype": "Currency",
-   "label": "Credit Amount"
+   "label": "Credit Amount (INR)"
   },
   {
    "fieldname": "party_type",
@@ -86,7 +86,7 @@
    "fieldname": "balance",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Balance"
+   "label": "Balance (INR)"
   },
   {
    "fieldname": "remarks",
@@ -97,7 +97,7 @@
  "in_create": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-03-17 17:05:49.961292",
+ "modified": "2020-04-02 11:31:48.148991",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "GL Entry",

@@ -63,9 +63,7 @@ class PaymentEntry(Document):
 		
 		if invoice.amount_due == 0:
 			invoice.payment_status = 'Paid'
-		elif invoice.amount_due == total_due:
-			invoice.payment_status = 'Unpaid'
 		else:
-			invoice.payment_status = 'Partial'
+			invoice.payment_status = 'Unpaid'
 		
 		invoice.save()
