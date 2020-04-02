@@ -15,8 +15,15 @@
  ],
  "cards_label": "Accounting Overview",
  "category": "Modules",
- "charts": [],
- "charts_label": "Profit And Loss",
+ "charts": [
+  {
+   "chart_name": "Invoice Created"
+  },
+  {
+   "chart_name": "Payments Made"
+  }
+ ],
+ "charts_label": "Accounting Stats",
  "creation": "2020-03-30 23:29:04.454029",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
@@ -27,7 +34,7 @@
  "idx": 0,
  "is_standard": 1,
  "label": "Accounting",
- "modified": "2020-04-02 09:35:23.640044",
+ "modified": "2020-04-02 13:39:59.218670",
  "modified_by": "Administrator",
  "module": "Accounting",
  "name": "Accounting",

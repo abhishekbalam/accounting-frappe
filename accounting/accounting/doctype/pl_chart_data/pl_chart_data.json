@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "autoname": "field:fy",
+ "creation": "2020-04-02 13:11:41.073249",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fy",
+  "date",
+  "profit"
+ ],
+ "fields": [
+  {
+   "fieldname": "profit",
+   "fieldtype": "Currency",
+   "label": "Profit"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "fy",
+   "fieldtype": "Data",
+   "label": "FY",
+   "unique": 1
+  }
+ ],
+ "links": [],
+ "modified": "2020-04-02 13:26:59.491313",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "PL Chart Data",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

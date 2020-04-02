@@ -1,0 +1,13 @@
+{
+ "creation": "2020-04-02 13:33:27.736186",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart Source",
+ "idx": 0,
+ "modified": "2020-04-02 13:33:27.736186",
+ "modified_by": "Administrator",
+ "module": "Accounting",
+ "name": "PL",
+ "owner": "Administrator",
+ "source_name": "PL",
+ "timeseries": 1
+}

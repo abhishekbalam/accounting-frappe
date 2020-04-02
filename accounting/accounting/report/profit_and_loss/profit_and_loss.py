@@ -40,7 +40,7 @@ def execute(filters=None):
 		data.append({
 			'account': name,	
 			'balance': balance,
-			'indent': 1.0,
+			'indent': 1.0
 		})
 		all_balances.append(balance)
 
