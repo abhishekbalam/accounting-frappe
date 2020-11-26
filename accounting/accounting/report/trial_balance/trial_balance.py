@@ -31,16 +31,16 @@ def execute(filters=None):
 			'width': 200
 		}
 	]
-	
+
 	# accounts_old = frappe.get_all('Account', filters=[['name', '!=', 'Gada Electronics']], fields=['name', 'is_group'])
 	accounts = get_accounts()
 	total_credit = 0
 	total_debit = 0
-	
+
 	fiscal_year = frappe.get_doc('Fiscal Year', filters['fiscal_year'])
 	start_date = str(fiscal_year.start_date)
 	end_date = str(fiscal_year.end_date)
-	
+
 	for x in accounts:
 		data.append({
 			'account': '<b>' + x['group'] + '</b>',
@@ -69,7 +69,7 @@ def execute(filters=None):
 				'debit': debit,
 				'indent': 1.0
 			})
-	
+
 	data.append({
 		'account': '<b>Totals</b>',
 		'credit': total_credit,
